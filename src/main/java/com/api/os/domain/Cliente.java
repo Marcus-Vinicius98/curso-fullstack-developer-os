@@ -1,16 +1,33 @@
 package com.api.os.domain;
 
-public class Cliente extends Pessoa{
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Cliente extends Pessoa {
+
+	@OneToMany(mappedBy = "cliente")
+	private List<OrdemServico> ordemServico = new ArrayList<>();
 
 	public Cliente() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Cliente(Long id, String nome, String cpf, String telefone) {
 		super(id, nome, cpf, telefone);
-		// TODO Auto-generated constructor stub
+
 	}
-	
+
+	public List<OrdemServico> getOrdemServico() {
+		return ordemServico;
+	}
+
+	public void setOrdemServico(List<OrdemServico> ordemServico) {
+		this.ordemServico = ordemServico;
+	}
 
 }
