@@ -6,9 +6,13 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Tecnico extends Pessoa{
+	private static final long serialVersionUID = 1L;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "tecnico")
 	private List<OrdemServico> ordemServico = new ArrayList<>();
 

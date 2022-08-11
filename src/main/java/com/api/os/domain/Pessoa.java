@@ -1,5 +1,6 @@
 package com.api.os.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -10,9 +11,10 @@ import javax.persistence.Id;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
-public abstract class Pessoa {
-	
-    @Id
+public abstract class Pessoa implements Serializable {
+ static final long serialVersionUID = 1L;
+ 
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
