@@ -1,5 +1,8 @@
 package com.api.os.resources;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +27,13 @@ public class TecnicoResource {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<TecnicoDTO> findById(@PathVariable Long id) {
 		return ResponseEntity.ok().body(mapper.map(service.findById(id), TecnicoDTO.class));
+
+	}
+
+	@GetMapping
+	public ResponseEntity<List<TecnicoDTO>> findAll() {
+		return ResponseEntity.ok().body(
+				service.findAll().stream().map(x -> mapper.map(x, TecnicoDTO.class)).collect(Collectors.toList()));
 
 	}
 
