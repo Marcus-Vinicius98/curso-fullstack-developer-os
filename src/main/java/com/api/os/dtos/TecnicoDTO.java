@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.api.os.domain.Tecnico;
-
 public class TecnicoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
