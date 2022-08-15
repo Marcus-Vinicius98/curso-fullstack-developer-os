@@ -1,31 +1,34 @@
 package com.api.os.resources.exceptions;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
-public class StandardError implements Serializable{
+public class StandardError implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	private Long Timestamp;
+
+	private LocalDateTime timestamp;
 	private Integer status;
 	private String error;
+	private String path;
 
 	public StandardError() {
 
 	}
 
-	public StandardError(Long timestamp, Integer status, String error) {
+	public StandardError(LocalDateTime timestamp, Integer status, String error, String path) {
 		super();
-		Timestamp = timestamp;
+		this.timestamp = timestamp;
 		this.status = status;
 		this.error = error;
+		this.path = path;
 	}
 
-	public Long getTimestamp() {
-		return Timestamp;
+	public LocalDateTime getTimestamp() {
+		return timestamp;
 	}
 
-	public void setTimestamp(Long timestamp) {
-		Timestamp = timestamp;
+	public void setTimestamp(LocalDateTime timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	public Integer getStatus() {
@@ -42,6 +45,14 @@ public class StandardError implements Serializable{
 
 	public void setError(String error) {
 		this.error = error;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 }
