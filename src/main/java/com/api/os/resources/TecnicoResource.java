@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +31,7 @@ public class TecnicoResource {
 	private ModelMapper mapper;
 	
 	@PostMapping
-	public ResponseEntity<TecnicoDTO> save(@RequestBody TecnicoDTO tecnicoDTO){
+	public ResponseEntity<TecnicoDTO> save(@Valid @RequestBody TecnicoDTO tecnicoDTO){
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 	              .buildAndExpand(service.save(tecnicoDTO).getId()).toUri();
 		return ResponseEntity.created(uri).build();

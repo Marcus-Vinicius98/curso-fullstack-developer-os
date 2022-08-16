@@ -2,15 +2,22 @@ package com.api.os.dtos;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
 import org.hibernate.validator.constraints.br.CPF;
 
 public class TecnicoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	
+	@NotEmpty(message = "O campo nome é requerido")
 	private String nome;
 	@CPF
+	@NotEmpty(message = "O campo CPF é requerido")
 	private String cpf;
+	
+	@NotEmpty(message = "O campo telefone é requerido")
 	private String telefone;
 
 	public TecnicoDTO() {
