@@ -3,6 +3,8 @@ package com.api.os.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,7 +45,11 @@ public class TecnicoService {
 			throw new DataIntegratyViolationException("CPF já cadastrado na base de dados");
 
 		}
+	}
 
+	public Tecnico update(@Valid TecnicoDTO tecnicoDTO) {
+		findByCpf(tecnicoDTO);
+		return repository.save(mapper.map(tecnicoDTO, Tecnico.class));
 	}
 
 }
